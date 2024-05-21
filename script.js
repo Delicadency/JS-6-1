@@ -30,3 +30,12 @@ function createDOM(tagName) {
     createDOM(tagName);
   });
 }
+
+function removeDOM(selector) {
+  if (typeof selector !== "string") {
+    console.error(
+      "Wprowadź prawidłową nazwę dla selektora, którego chcesz usunąć."
+    );
+    return null;
+  }
+}
