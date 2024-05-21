@@ -38,4 +38,11 @@ function removeDOM(selector) {
     );
     return null;
   }
+  const selectorRM = document.querySelector(selector);
+  const body = document.querySelector("body");
+  body.removeChild(selectorRM);
+
+  document.addEventListener("DOMContentLoaded", () => {
+    removeDOM(selector);
+  });
 }
