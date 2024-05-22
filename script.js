@@ -1,3 +1,4 @@
+document.addEventListener("DOMContentLoaded", () => {});
 function createDOM(tagName) {
   if (typeof tagName !== "string" || tagName === "") {
     console.error("Wprowadź prawidłową nazwę tagu, który chcesz utworzyć.");
