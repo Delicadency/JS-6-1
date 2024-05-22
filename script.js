@@ -1,31 +1,28 @@
 function createDOM(tagName) {
-  if (typeof tagName !== "string") {
+  if (typeof tagName !== "string" || tagName === "") {
     console.error("Wprowadź prawidłową nazwę tagu, który chcesz utworzyć.");
-    return null;
+    return;
   }
-
   const tag = document.createElement(tagName);
   tag.classList.add("item");
   const body = document.querySelector("body");
-  body.insertAdjacentElement("afterbegin", tag);
-
-  document.addEventListener("DOMContentLoaded", () => {
-    createDOM(tagName);
-  });
+  body.insertAdjacentElement("beforeend", tag);
+  return tag;
 }
 
 function removeDOM(selector) {
-  if (typeof selector !== "string") {
+  if (typeof selector !== "string" || selector === "") {
     console.error(
       "Wprowadź prawidłową nazwę dla selektora, którego chcesz usunąć."
     );
-    return null;
+    return;
   }
-  const selectorRM = document.querySelector(selector);
+  const tagToRemove = document.querySelector(selector);
+  if (!tagToRemove) {
+    console.error("Nie znaleziono elementu w drzewie DOM.");
+    return;
+  }
   const body = document.querySelector("body");
-  body.removeChild(selectorRM);
-
-  document.addEventListener("DOMContentLoaded", () => {
-    removeDOM(selector);
-  });
+  body.removeChild(tagToRemove);
+  return tagToRemove;
 }
